@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChannelOnly – Channel Filter &amp; Recommendation Blocker</title>
+  <link rel="icon" href="icons/icon32.png" />
+  <link rel="stylesheet" href="common.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="app-header">
+      <h1 class="wordmark"><span class="g">Channel</span><span class="o">Only</span><span class="cursor"></span></h1>
+    </div>
+    <p class="tagline">Channel filter &amp; recommendation blocker. Pick the channels you want; on youtube.com you'll only see these channels and their videos.</p>
+
+    <div class="panel">
+      <div class="toggle-row" style="border:none">
+        <div class="lead">
+          <strong>Filtering</strong>
+          <div class="muted" id="stateLine">On</div>
+        </div>
+        <button class="switch" id="enabledSwitch" data-on="true" aria-label="Turn filtering on or off">
+          <span class="lbl on">ON</span><span class="lbl off">OFF</span><span class="knob"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="eyebrow">Add a channel</div>
+    <div class="panel">
+      <p class="muted" style="margin:0 2px 12px">Easiest way: turn filtering off, open any channel or video on YouTube, and click <strong>Add to ChannelOnly</strong> in the bottom-right corner. Or paste a channel link here:</p>
+      <div class="row">
+        <input type="text" id="channelInput" class="field grow" placeholder="youtube.com/@name, @name, or a UC… channel ID" aria-label="Channel link, handle, or ID" />
+        <button class="btn" id="addChannel">Add</button>
+      </div>
+      <p class="muted" id="addStatus" style="margin:10px 2px 0"></p>
+    </div>
+
+    <div class="eyebrow">Your channels</div>
+    <div class="panel">
+      <ul class="list" id="channels"></ul>
+      <p class="muted hidden" id="empty">No channels yet. Until you add one, YouTube looks completely normal.</p>
+    </div>
+
+    <p class="muted" style="text-align:center;margin-top:28px">ChannelOnly is not affiliated with or endorsed by YouTube or Google. Your channel list stays in your browser.</p>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

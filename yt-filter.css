@@ -1,0 +1,98 @@
+/* ChannelOnly — the hiding rules below apply ONLY while filtering is active (html.fl-on).
+   With the app off or no channels chosen, YouTube looks completely normal. */
+
+/* Left drawer, hamburger, mini guide (Subscriptions, History, Explore…) */
+html.fl-on tp-yt-app-drawer#guide,
+html.fl-on ytd-mini-guide-renderer,
+html.fl-on #guide-button {
+  display: none !important;
+}
+
+/* Notifications bell */
+html.fl-on ytd-notification-topbar-button-renderer {
+  display: none !important;
+}
+
+/* Native home feed + chips — replaced by "From your channels" */
+html.fl-on ytd-browse[page-subtype="home"] ytd-rich-grid-renderer,
+html.fl-on ytd-feed-filter-chip-bar-renderer {
+  display: none !important;
+}
+
+/* Native watch-page recommendations — replaced by "From your channels" */
+html.fl-on ytd-watch-flexy #related {
+  display: none !important;
+}
+
+/* Player end screens, up-next countdown, pause overlay */
+html.fl-on .ytp-endscreen-content,
+html.fl-on .ytp-ce-element,
+html.fl-on .ytp-pause-overlay,
+html.fl-on .ytp-suggested-action,
+html.fl-on .ytp-autonav-endscreen-countdown-overlay {
+  display: none !important;
+}
+
+/* Search: recommendation shelves ("People also watched"…) and Shorts shelves */
+html.fl-on ytd-search ytd-shelf-renderer,
+html.fl-on ytd-search ytd-horizontal-card-list-renderer,
+html.fl-on ytd-search grid-shelf-view-model,
+html.fl-on ytd-reel-shelf-renderer,
+html.fl-on ytd-rich-shelf-renderer[is-shorts] {
+  display: none !important;
+}
+
+/* ---------- "From your channels" shelves (match YouTube's look, light & dark) ---------- */
+html:not(.fl-on) .fl-shelf { display: none !important; }
+
+.fl-shelf {
+  font-family: "Roboto", "Arial", sans-serif;
+  color: var(--yt-spec-text-primary, #0f0f0f);
+  box-sizing: border-box;
+}
+.fl-head { font-size: 20px; font-weight: 700; margin: 0 0 16px; }
+.fl-msg { font-size: 14px; color: var(--yt-spec-text-secondary, #606060); padding: 8px 0; }
+.fl-card { display: block; color: inherit; text-decoration: none; }
+.fl-thumb {
+  position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden;
+  border-radius: 12px; background: var(--yt-spec-badge-chip-background, rgba(0,0,0,0.05));
+}
+.fl-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fl-title {
+  font-size: 16px; font-weight: 500; line-height: 22px; margin-top: 12px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.fl-meta { font-size: 14px; line-height: 20px; color: var(--yt-spec-text-secondary, #606060); margin-top: 4px; }
+
+/* Home: grid */
+.fl-grid { width: 100%; padding: 24px 24px 48px; }
+.fl-grid .fl-body { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px 16px; }
+
+/* Watch sidebar: compact list */
+.fl-list { margin-bottom: 16px; }
+.fl-list .fl-head { font-size: 16px; margin-bottom: 12px; }
+.fl-list .fl-body { display: flex; flex-direction: column; gap: 8px; }
+.fl-list .fl-card { display: flex; gap: 8px; }
+.fl-list .fl-thumb { width: 168px; min-width: 168px; border-radius: 8px; }
+.fl-list .fl-title { font-size: 14px; line-height: 20px; margin-top: 0; }
+.fl-list .fl-meta { font-size: 12px; line-height: 18px; }
+
+/* ---------- "Add to ChannelOnly" button (appears only while filtering is off) ---------- */
+html.fl-on .fl-pill { display: none !important; }
+.fl-pill {
+  position: fixed; right: 24px; bottom: 24px; z-index: 2300;
+  display: flex; align-items: stretch; overflow: hidden;
+  border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #2a1450; color: #fff;
+  box-shadow: 0 8px 28px rgba(20, 8, 44, 0.45);
+  font-family: "Roboto", "Arial", sans-serif;
+}
+.fl-pill button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.fl-pill-add { display: flex; align-items: center; gap: 10px; padding: 11px 8px 11px 16px; font-size: 14px; font-weight: 500; }
+.fl-pill-add:hover .fl-pill-text { text-decoration: underline; text-underline-offset: 3px; }
+.fl-pill-add:disabled { cursor: default; }
+.fl-pill-add:disabled .fl-pill-text { text-decoration: none; }
+.fl-pill-dot { width: 10px; height: 10px; flex: none; border-radius: 50%; background: #1fe0ff; box-shadow: 0 0 10px rgba(31, 224, 255, 0.8); }
+.fl-pill-close { padding: 0 16px 0 10px; font-size: 20px; line-height: 1; opacity: 0.7; }
+.fl-pill-close:hover { opacity: 1; }
+.fl-pill button:focus-visible { outline: 2px solid #1fe0ff; outline-offset: -3px; border-radius: 999px; }
